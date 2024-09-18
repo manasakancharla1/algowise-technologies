@@ -29,27 +29,29 @@ const mongoURI = 'mongodb://localhost:27017/jobCoursesDB';  // Use a single Mong
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
-
 // Define Job schema and model
-const jobSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  company: { type: String, required: true },
-  location: { type: String, required: true },
-  description: { type: String },   // Add description field
-  duration: { type: String },      // Add duration field
-  salary: { type: Number }         // Add salary field (or any other relevant field)
-});
-const Job = mongoose.model('Job', jobSchema, 'jobs');
-
+  const jobSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    company: { type: String, required: true },
+    location: { type: String, required: true },
+    description: { type: String },   // Add description field
+    duration: { type: String },      // Add duration field
+    salary: { type: Number }         // Add salary field (or any other relevant field)
+  });
+  
+  // Create Job model
+  const Job = mongoose.model('Job', jobSchema, 'jobs');
+  
 // Define Course schema and model
 const courseSchema = new mongoose.Schema({
   title: String,
   provider: String,
   description: String,  // Add description field
   duration: String,     // Add duration field
-  price: Number         // Add price field
+  price: Number          // Add price field
 });
 const Course = mongoose.model('Course', courseSchema, 'courses');
+
 
 // Define User schema and model
 const userSchema = new mongoose.Schema({
@@ -75,17 +77,6 @@ userSchema.methods.comparePassword = function (candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };
 const User = mongoose.model('User', userSchema, 'users');
-
-// Middleware to check if user is authenticated
-const isAuthenticated = (req, res, next) => {
-  const username = req.header('username');
-  if (!username) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
-  // Here you might want to check if the user exists and is valid
-  req.username = username; // Store username for further use
-  next();
-};
 
 // API endpoint to fetch jobs with pagination from MongoDB
 app.get('/api/jobs', async (req, res) => {
@@ -155,35 +146,6 @@ app.get('/api/courses', async (req, res) => {
   }
 });
 
-// API endpoint for course autocomplete
-app.get('/api/courses/autocomplete', async (req, res) => {
-  const { search } = req.query;
-
-  try {
-    const courses = await Course.find({
-      title: { $regex: search, $options: 'i' }
-    }).limit(5); // Limit results for autocomplete
-
-    res.json(courses);
-  } catch (error) {
-    res.status(500).json({ error: 'Error fetching autocomplete suggestions' });
-  }
-});
-
-// API endpoint for job autocomplete
-app.get('/api/jobs/autocomplete', async (req, res) => {
-  const { search } = req.query;
-
-  try {
-    const jobs = await Job.find({
-      title: { $regex: search, $options: 'i' }
-    }).limit(5); // Limit results for autocomplete
-
-    res.json(jobs);
-  } catch (error) {
-    res.status(500).json({ error: 'Error fetching autocomplete suggestions' });
-  }
-});
 
 // API endpoint for user signup with input validation
 app.post('/api/signup', [
@@ -248,28 +210,6 @@ app.post('/api/signin', [
     res.json({ message: 'Sign in successful', username: user.username });
   } catch (error) {
     res.status(500).json({ error: 'Error signing in' });
-  }
-});
-
-// API endpoint to apply for a job
-app.post('/api/jobs/apply', isAuthenticated, async (req, res) => {
-  const { jobId } = req.body;
-  try {
-    // You can add logic here to save application details or send a notification
-    res.json({ message: 'Successfully applied for the job', jobId });
-  } catch (error) {
-    res.status(500).json({ error: 'Error applying for job' });
-  }
-});
-
-// API endpoint to save a course
-app.post('/api/courses/save', isAuthenticated, async (req, res) => {
-  const { courseId } = req.body;
-  try {
-    // You can add logic here to save course details or send a notification
-    res.json({ message: 'Course saved successfully', courseId });
-  } catch (error) {
-    res.status(500).json({ error: 'Error saving course' });
   }
 });
 
