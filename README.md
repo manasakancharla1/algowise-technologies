@@ -25,9 +25,9 @@
      ```bash
      npm install
      ```
-   - Create a `.env` file with the following content:
+   - Create a `.env` file or in server.js file with the following content:
      ```bash
-     MONGO_URI=mongodb://localhost:27017/jobCoursesDB
+     MONGO_URI=your database url
      PORT=5000
      ```
    - Start the backend server:
