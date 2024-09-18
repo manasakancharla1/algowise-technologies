@@ -1,122 +1,88 @@
-﻿# DemoProject
-# DemoProject
 # AlgoWise Technologies
 
-AlgoWise Technologies is a web application that allows users to explore job listings and trending courses. The frontend is built using React.js, and the backend is developed with Node.js, utilizing MongoDB as the database.
+**Project Overview:** AlgoWise Technologies is a web application that allows users to explore job listings and trending courses. The frontend is built using React.js, and the backend is developed with Node.js, utilizing MongoDB as the database.
 
-## Features
+**Setup Instructions:**
 
-- **Job Listings**: Users can browse and apply for jobs.
-- **Courses**: Users can explore and enroll in trending courses.
-- **User Authentication**: Sign up, log in, and manage user accounts.
-- **Mobile-Friendly**: Responsive design for optimal performance on all devices.
-- **Dynamic Data**: Real-time data fetched from MongoDB for jobs and courses.
-- **Security**: Basic input validation and protection against common vulnerabilities.
+1. **Prerequisites:** Ensure you have the following installed:
+   - **Node.js** (v14 or above)
+   - **MongoDB** (running locally or via a cloud provider like MongoDB Atlas)
+   - **npm** or **yarn**
+   - **Git**
 
-## Table of Contents
+2. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/manasakancharla1/algowise-technologies.git
+   cd algowise-technologies
+   ```
 
-- [Installation](#installation)
-  - [Prerequisites](#prerequisites)
-  - [Clone the Repository](#clone-the-repository)
-  - [Backend Setup](#backend-setup)
-  - [Frontend Setup](#frontend-setup)
-- [Folder Structure](#folder-structure)
-- [API Endpoints](#api-endpoints)
+3. **Backend Setup:**
+   - Navigate to the `backend` folder:
+     ```bash
+     cd backend
+     ```
+   - Install dependencies:
+     ```bash
+     npm install
+     ```
+   - Create a `.env` file with the following content:
+     ```bash
+     MONGO_URI=mongodb://localhost:27017/jobCoursesDB
+     PORT=5000
+     ```
+   - Start the backend server:
+     ```bash
+     npm start
+     ```
+   - The backend server will run at `http://localhost:5000`.
 
-## Installation
+4. **Frontend Setup:**
+   - Navigate to the `frontend` folder:
+     ```bash
+     cd ../frontend
+     ```
+   - Install dependencies:
+     ```bash
+     npm install
+     ```
+   - Start the frontend development server:
+     ```bash
+     npm start
+     ```
+   - The frontend application will run at `http://localhost:3000`.
 
-### Prerequisites
+**Running the Project:**
 
-Ensure you have the following installed on your machine:
+- **Backend:** Ensure MongoDB is running, then start the backend server using `npm start` in the `backend` directory.
+- **Frontend:** Start the frontend development server using `npm start` in the `frontend` directory.
 
-- **Node.js** (v14 or above)
-- **MongoDB** (running locally or via a cloud provider like MongoDB Atlas)
-- **npm** or **yarn**
-- **Git**
+**API Documentation:**
 
-### Clone the Repository
+- **Jobs API:** 
+  - `GET /api/jobs` - Fetch all available jobs.
+  - `POST /api/jobs` - Create a new job (admin-only).
+- **Courses API:** 
+  - `GET /api/courses` - Fetch all available courses.
+  - `POST /api/courses` - Create a new course (admin-only).
+- **User Authentication API:** 
+  - `POST /api/signup` - Register a new user.
+  - `POST /api/signin` - Authenticate a user and return a token.
 
-To get started, clone the repository to your local machine:
+**Dependencies:**
 
-```bash
-git clone https://github.com/manasakancharla1/algowise-technologies.git
-cd algowise-technologies
-```
+- **Backend:** 
+  - `express` - Fast, unopinionated, minimalist web framework for Node.js
+  - `mongoose` - MongoDB object modeling tool
+  - `dotenv` - Loads environment variables from a `.env` file
+- **Frontend:** 
+  - `react` - JavaScript library for building user interfaces
+  - `react-router-dom` - Declarative routing for React.js
+  - `bootstrap` - Frontend framework for building responsive, mobile-first sites
+  - `font-awesome` - Icon library for scalable vector icons
 
-### Backend Setup
+**Troubleshooting:**
 
-1. Navigate to the backend folder and install dependencies:
-
-```bash
-cd backend
-npm install
-```
-
-2. Create a `.env` file in the `backend` folder with the following content:
-
-```bash
-MONGO_URI=mongodb://localhost:27017/jobCoursesDB
-PORT=5000
-```
-
-3. Start the backend server:
-
-```bash
-npm start
-```
-
-The backend server should now be running at `http://localhost:5000`.
-
-### Frontend Setup
-
-1. Navigate to the frontend folder and install dependencies:
-
-```bash
-cd frontend
-npm install
-```
-
-2. Start the frontend development server:
-
-```bash
-npm start
-```
-
-The frontend should now be running at `http://localhost:3000`.
-
-## Folder Structure
-
-The project folder structure is organized as follows:
-
-```bash
-algowise-technologies/
-├── backend/          # Backend (Node.js API for jobs and courses)
-│   ├── controllers/  # Logic for handling requests
-│   ├── models/       # MongoDB models for jobs and courses
-│   ├── routes/       # API routes for jobs and courses
-│   ├── app.js        # Express server setup
-│   └── package.json  # Backend dependencies
-├── frontend/         # Frontend (React.js UI)
-│   ├── src/
-│   │   ├── components/ # React components (Header, Footer, etc.)
-│   │   ├── pages/      # React pages (Home, AboutUs, Jobs, Courses)
-│   │   ├── App.js      # Main React component
-│   │   └── index.js    # Entry point for React
-│   └── package.json    # Frontend dependencies
-└── README.md         # Project README
-```
-
-## API Endpoints
-
-The backend provides the following API endpoints:
-
-- **Jobs API**
-  - `GET /api/jobs`: Fetch all available jobs.
-  - `POST /api/jobs`: Create a new job (admin-only).
-- **Courses API**
-  - `GET /api/courses`: Fetch all available courses.
-  - `POST /api/courses`: Create a new course (admin-only).
-- **User Authentication API**
-  - `POST /api/signup`: Register a new user.
-  - `POST /api/signin`: Authenticate a user and return a token.
+- **Backend Not Starting:** Ensure MongoDB is running. Check your `.env` file for correct configuration. Verify that the port is not in use by another process.
+- **Frontend Not Loading:** Ensure the backend server is running. Check for any console errors in the browser's developer tools. Verify that the frontend dependencies are correctly installed.
+- **API Errors:** Confirm that the API endpoints are correct and accessible. Ensure that your backend server is running and that there are no network issues preventing communication between frontend and backend.
 
