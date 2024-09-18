@@ -1,0 +1,67 @@
+/* Header.css */
+
+header {
+  margin-bottom: 20px;
+}
+
+.navbar {
+  padding: 10px 20px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar-brand img {
+  height: 60px;
+  width: auto;
+}
+
+.navbar-brand span {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  margin-left: 10px;
+}
+
+.navbar-toggler {
+  border: none;
+  background: transparent;
+}
+
+.navbar-toggler-icon {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3E%3Cpath stroke="%23fff" stroke-width="2" d="M4 7h22M4 15h22M4 23h22" /%3E%3C/svg%3E');
+}
+
+.nav-link {
+  color: white;
+  font-size: 16px;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #ddd;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar-nav {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,45 @@
+/* src/App.css */
+
+.App {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: black;
+}
+
+header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: black;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .content {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+section {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.952);
+  padding: 20px;
+  margin-bottom: 20px;
+  
+}

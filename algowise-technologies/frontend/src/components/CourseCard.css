@@ -1,0 +1,45 @@
+.course-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.course-card.selected {
+  border-color: #007bff;
+  background-color: #f8f9fa;
+  transform: scale(1.05); /* Slightly enlarge the card */
+  z-index: 10; /* Ensure the enlarged card is above others */
+}
+
+.course-card h3 span, .course-card p span {
+  font-weight: bold;
+}
+
+.course-details {
+  margin-top: 12px;
+  padding: 12px;
+  border-top: 1px solid #ddd;
+  background-color: #f8f9fa;
+}
+
+.btn {
+  margin: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,81 @@
+/* Home.css */
+
+.home {
+  font-family: 'Arial', sans-serif;
+}
+
+.hero {
+  background: url('https://www.example.com/hero-bg.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  margin-bottom: 50px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color:black;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  color:black;
+}
+
+.hero-buttons .btn {
+  margin: 10px;
+  padding: 15px 25px;
+  font-size: 1rem;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f8f9fa;
+}
+
+.feature {
+  flex: 1;
+  max-width: 300px;
+  margin: 0 15px;
+}
+
+.feature i {
+  font-size: 4rem;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 1rem;
+}
+
+.cta {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.cta h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.cta .btn {
+  padding: 15px 25px;
+  font-size: 1rem;
+}

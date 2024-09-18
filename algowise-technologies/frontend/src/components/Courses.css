@@ -1,0 +1,66 @@
+/* src/components/Courses.css */
+#courses{
+  background-color: white;
+}
+h2{
+  display:flex;
+  text-align: center;
+  justify-content: center;
+}
+.course-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.course-list .course-card {
+  flex: 1 1 calc(33.333% - 32px); /* Adjust card width and spacing */
+  margin: 16px;
+}
+
+/* Pagination container */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Pagination buttons */
+.pagination-controls button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.pagination-controls span {
+  margin: 0 10px;
+  font-size: 16px;
+}
+
+/* Optional: Add some responsive adjustments */
+@media (max-width: 1200px) {
+  .course-list .course-card {
+    flex: 1 1 calc(50% - 32px); /* Two columns layout on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .course-list .course-card {
+    flex: 1 1 100%; /* Full width on small screens */
+  }
+}
