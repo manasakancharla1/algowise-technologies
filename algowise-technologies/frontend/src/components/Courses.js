@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import CourseCard from './CourseCard';
-import './Courses.css'; // Make sure this file is correctly linked
+import './Courses.css';
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -13,19 +13,12 @@ const Courses = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if the user is authenticated
-    const user = localStorage.getItem('user');
-    if (!user) {
-      navigate('/signin'); // Redirect to sign-in page if not authenticated
-      return;
-    }
-
     const fetchCourses = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/courses', {
           params: {
             page: page,
-            limit: 10, // Number of items per page
+            limit: 10,
             search: searchTerm,
           },
         });
@@ -37,7 +30,7 @@ const Courses = () => {
     };
 
     fetchCourses();
-  }, [page, searchTerm, navigate]);
+  }, [page, searchTerm]);
 
   const handleSearchChange = async (e) => {
     const value = e.target.value;
@@ -48,18 +41,18 @@ const Courses = () => {
         const response = await axios.get('http://localhost:5000/api/courses/autocomplete', {
           params: { search: value },
         });
-        setAutocompleteResults(response.data); // Update the autocomplete results
+        setAutocompleteResults(response.data);
       } catch (error) {
         console.error('Error fetching autocomplete suggestions:', error);
       }
     } else {
-      setAutocompleteResults([]); // Clear autocomplete if search input is empty
+      setAutocompleteResults([]);
     }
   };
 
   const handleSelectSuggestion = (title) => {
-    setSearchTerm(title); // Update search term with selected suggestion
-    setAutocompleteResults([]); // Clear the suggestions
+    setSearchTerm(title);
+    setAutocompleteResults([]);
   };
 
   const handleNextPage = () => {
@@ -102,7 +95,7 @@ const Courses = () => {
       </div>
       <div className="course-list">
         {courses.map(course => (
-          <CourseCard key={course.id} course={course} />
+          <CourseCard key={course._id} course={course} />
         ))}
       </div>
       <div className="pagination-controls">
