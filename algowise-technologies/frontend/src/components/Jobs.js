@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import axios from 'axios';
 import JobCard from './JobCard';
 import './Jobs.css';
@@ -10,16 +9,8 @@ const Jobs = () => {
   const [autocompleteResults, setAutocompleteResults] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if the user is authenticated
-    const user = localStorage.getItem('user');
-    if (!user) {
-      navigate('/signin'); // Redirect to sign-in page if not authenticated
-      return;
-    }
-
     const fetchJobs = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/jobs', {
@@ -37,7 +28,7 @@ const Jobs = () => {
     };
 
     fetchJobs();
-  }, [page, searchTerm, navigate]);
+  }, [page, searchTerm]);
 
   const handleSearchChange = async (e) => {
     const value = e.target.value;
